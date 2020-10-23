@@ -1,12 +1,14 @@
 {
   "name": "vue3-component-library",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
   "unpkg": "dist/vuelib.min.js",
+  "types":"types/index.d.ts",
   "files": [
     "dist",
-    "src"
+    "src",
+    "types/*.d.ts"
   ],
   "sideEffects": [
     "*.css",
