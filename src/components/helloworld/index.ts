@@ -1,7 +1,7 @@
 import { App as Application } from "vue";
 import HelloWorld from "./HelloWorld.vue";
 
-import { use, registerComponent } from "./../../utils/plugins/index";
+import { registerComponent } from "./../../utils/plugins/index";
 
 const Plugin = {
   install(vue: Application) {
@@ -9,7 +9,7 @@ const Plugin = {
   }
 };
 
-use(Plugin);
+// use(Plugin);
 
 export default Plugin;
 
