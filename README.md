@@ -1,4 +1,4 @@
-# vue-3-local
+# vue3 Component Library
 
 ## Project setup
 ```
@@ -13,6 +13,11 @@ yarn serve
 ### Compiles and minifies for production
 ```
 yarn build
+```
+
+### Build Library
+```
+yarn build:js
 ```
 
 ### Lints and fixes files
