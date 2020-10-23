@@ -1,13 +1,15 @@
 import { App as Application } from "vue";
 import TestWorld from "./TestWorld.vue";
 
-import { registerComponent } from "./../../utils/plugins/index";
+import { use, registerComponent } from "./../../utils/plugins/index";
 
 const Plugin = {
   install(vue: Application) {
     registerComponent(vue, TestWorld);
   }
 };
+
+use(Plugin);
 
 export default Plugin;
 
