@@ -3,5 +3,5 @@ module.exports = {
     webpackBundleAnalyzer: {
       openAnalyzer: true
     }
-  },
+  }
 };
