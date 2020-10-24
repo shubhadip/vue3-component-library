@@ -1,6 +1,20 @@
-# vue3 Component Library
+# vue 3 Component Library BoilerPlate
+
+
+**Technology Used:**\
+[Vuejs 3.0](https://github.com/vuejs/vue-next)\
+[Typescript](https://github.com/microsoft/TypeScript)\
+[Rollup](https://github.com/rollup/rollup)\
 
 ## Project setup
+Please follow below mentioned step to run this project:
+
+- Clone the repo
+```shell
+https://github.com/shubhadip/vue3-component-library
+```
+
+### Run
 ```
 yarn install
 ```
@@ -20,10 +34,12 @@ yarn build
 yarn build:js
 ```
 
+### Build Library With Separate Css file
+```
+yarn build:js_css
+```
+
 ### Lints and fixes files
 ```
 yarn lint
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
