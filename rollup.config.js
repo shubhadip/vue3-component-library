@@ -17,6 +17,7 @@ import nested from "postcss-nested";
 import { terser } from "rollup-plugin-terser";
 import autoprefixer from "autoprefixer";
 import typescript from 'rollup-plugin-typescript2';
+import css from 'rollup-plugin-css-only';
 
 const postcssConfigList = [
   postcssImport({
@@ -49,6 +50,35 @@ const argv = minimist(process.argv.slice(2));
 
 const projectRoot = path.resolve(__dirname, ".");
 
+let postVueConfig = [
+  // Process only `<style module>` blocks.
+  PostCSS({
+    modules: {
+      generateScopedName: '[local]___[hash:base64:5]',
+    },
+    include: /&module=.*\.css$/,
+  }),
+  // Process all `<style>` blocks except `<style module>`.
+  PostCSS({ include: /(?<!&module=.*)\.css$/,
+    plugins:[
+      ...postcssConfigList
+    ]
+   }),
+  url({
+      include: [
+        '**/*.svg',
+        '**/*.png',
+        '**/*.gif',
+        '**/*.jpg',
+        '**/*.jpeg'
+      ]
+    }),
+]
+
+if(process.env.SEP_CSS){
+  postVueConfig = [css({ output: './dist/bundle.css' }), ...postVueConfig]
+}
+
 const baseConfig = {
   plugins: {
     preVue: [
@@ -71,25 +101,11 @@ const baseConfig = {
     },
     vue: {
       target: "browser",
-      preprocessStyles: true,
+      preprocessStyles: process.env.SEP_CSS ? false : true,
       postcssPlugins: [...postcssConfigList]
     },
     postVue: [
-      // Process only `<style module>` blocks.
-      PostCSS({
-        modules: {
-          generateScopedName: "[local]___[hash:base64:5]"
-        },
-        include: /&module=.*\.css$/
-      }),
-      // Process all `<style>` blocks except `<style module>`.
-      PostCSS({
-        include: /(?<!&module=.*)\.css$/,
-        plugins: [...postcssConfigList]
-      }),
-      url({
-        include: ["**/*.svg", "**/*.png", "**/*.gif", "**/*.jpg", "**/*.jpeg"]
-      })
+      ...postVueConfig
     ],
     babel: {
       exclude: "node_modules/**",
