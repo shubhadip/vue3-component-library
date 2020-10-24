@@ -1,6 +1,6 @@
 {
   "**/*.+(ts|js|vue)": [
-    "eslint --fix src/",
+    "eslint --cache --fix",
     "git add"
   ]
 }
