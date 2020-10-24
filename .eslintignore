@@ -8,3 +8,4 @@ test/
 dist/*.hot-update.json
 dist/index.html
 dist/webpack-stats.json
+testumdbuild
