@@ -1,5 +1,5 @@
 {
   "**/*.+(ts|js|vue)": [
-    "eslint --cache --fix"
+    "yarn lint"
   ]
 }

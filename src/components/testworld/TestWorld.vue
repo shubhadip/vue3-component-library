@@ -6,27 +6,23 @@
 </template>
 
 <script>
-import {
-    defineComponent,
-    ref
-} from 'vue';
+import { defineComponent, ref } from "vue";
 
 export default defineComponent({
-    name: 'TestWorld',
-    components: {
-    },
-    props: {
-        msg: String
-    },
-    setup() {
-        const textmsg = "I am Test World Component";
-        const selected = ref(new Date())
-        return {
-            textmsg,
-            selected
-        }
-    }
-})
+  name: "TestWorld",
+  components: {},
+  props: {
+    msg: String
+  },
+  setup() {
+    const textmsg = "I am Test World Component";
+    const selected = ref(new Date());
+    return {
+      textmsg,
+      selected
+    };
+  }
+});
 </script>
 
 <style lang="css" scoped>
