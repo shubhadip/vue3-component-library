@@ -14,7 +14,13 @@
     "*.css",
     "*.scss"
   ],
+  "config": {
+    "commitizen": {
+      "path": "git-cz"
+    }
+  },
   "scripts": {
+    "cz": "git-cz",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
@@ -68,7 +74,11 @@
     "rollup-plugin-vue": "^6.0.0-beta.10",
     "typescript": "3.9.3",
     "vue-cli-plugin-webpack-bundle-analyzer": "^2.0.0",
-    "husky": "^4.3.0"
+    "husky": "^4.3.0",
+    "@commitlint/cli": "^11.0.0",
+    "@commitlint/config-conventional": "^11.0.0",
+    "cz-conventional-changelog": "^3.3.0",
+    "git-cz": "^4.7.4"
   },
   "eslintConfig": {
     "root": true,
