@@ -48,7 +48,6 @@ yarn lint
 ## Usage Of Components Built
 **As Component**
 ```
-in case we want do not want to use component as plugin 
   import { TestWorld } from 'vue3-component-library/dist/esm/testworld';
   ...
   components:{
@@ -58,7 +57,6 @@ in case we want do not want to use component as plugin
 
 **As Plugin**
 ```
-in case we want do not want to use component as plugin 
   import { TestWorld } from 'vue3-component-library';
     ...
   app.use(TestWorld)
