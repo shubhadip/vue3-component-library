@@ -22,11 +22,11 @@
   "scripts": {
     "cz": "git-cz",
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "build:es": "rimraf dist && cross-env NODE_ENV=production rollup --config rollup.config.js --format es",
-    "build:js": "rimraf dist && cross-env NODE_ENV=production rollup --config rollup.config.js",
-    "build:js_css": "rimraf dist && cross-env NODE_ENV=production SEP_CSS=true rollup --config rollup.config.js"
+    "build:types": "tsc --build tsconfigtypes.json",
+    "build:es": "rimraf dist && cross-env NODE_ENV=production rollup --config rollup.config.js --format es && yarn build:types",
+    "build:js": "rimraf dist && cross-env NODE_ENV=production rollup --config rollup.config.js && yarn build:types",
+    "build:js_css": "rimraf dist && cross-env NODE_ENV=production SEP_CSS=true rollup --config rollup.config.js && yarn build:types"
   },
   "dependencies": {
     "core-js": "^3.6.5",

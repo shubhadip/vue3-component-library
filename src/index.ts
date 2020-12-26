@@ -15,3 +15,4 @@ const install: Exclude<Plugin["install"], undefined> = (
 export default install;
 
 export * from "./components";
+export * from './utilities';
