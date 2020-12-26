@@ -152,7 +152,6 @@ const capitalize = s => {
   return s.charAt(0).toUpperCase() + s.slice(1);
 };
 
-// Customize configs for individual targets
 let buildFormats = [];
 
 const mapComponent = name => {
@@ -192,7 +191,6 @@ if (!argv.format || argv.format === "es") {
     },
     plugins: [
       typescript(),
-      commonjs(),
       replace(baseConfig.plugins.replace),
       ...baseConfig.plugins.preVue,
       vue(baseConfig.plugins.vue),
@@ -200,7 +198,8 @@ if (!argv.format || argv.format === "es") {
       babel({
         ...baseConfig.plugins.babel,
         presets: [["@babel/preset-env", { modules: false }]]
-      })
+      }),
+      commonjs(),
     ]
   };
 
@@ -213,7 +212,6 @@ if (!argv.format || argv.format === "es") {
     },
     plugins: [
       typescript(),
-      commonjs(),
       replace(baseConfig.plugins.replace),
       ...baseConfig.plugins.preVue,
       vue(baseConfig.plugins.vue),
@@ -221,7 +219,8 @@ if (!argv.format || argv.format === "es") {
       babel({
         ...baseConfig.plugins.babel,
         presets: [["@babel/preset-env", { modules: false }]]
-      })
+      }),
+      commonjs(),
     ]
   };
   const ind = [
@@ -247,12 +246,12 @@ if (!argv.format || argv.format === "iife") {
     },
     plugins: [
       typescript(),
-      commonjs(),
       replace(baseConfig.plugins.replace),
       ...baseConfig.plugins.preVue,
       vue(baseConfig.plugins.vue),
       ...baseConfig.plugins.postVue,
       babel(baseConfig.plugins.babel),
+      commonjs(),
       terser({
         output: {
           ecma: 5
@@ -277,7 +276,6 @@ if (!argv.format || argv.format === "cjs") {
     },
     plugins: [
       typescript(),
-      commonjs(),
       replace(baseConfig.plugins.replace),
       ...baseConfig.plugins.preVue,
       vue({
@@ -288,7 +286,8 @@ if (!argv.format || argv.format === "cjs") {
         }
       }),
       ...baseConfig.plugins.postVue,
-      babel(baseConfig.plugins.babel)
+      babel(baseConfig.plugins.babel),
+      commonjs(),
     ]
   };
   buildFormats.push(cjsConfig);
