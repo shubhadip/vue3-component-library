@@ -1,14 +1,14 @@
-import { IOption, ISortInterface } from "../interfaces";
+import { Option, SortInterface } from "../interfaces";
 
 export const sortUtility = (
-  sortConfig: ISortInterface,
-  dataSource: IOption,
-  sortStratergies: IOption
-): IOption => {
-  const data = (dataSource[sortConfig.dataSource] as unknown) as Array<IOption>;
+  sortConfig: SortInterface,
+  dataSource: Option,
+  sortStratergies: Option
+): Option => {
+  const data = (dataSource[sortConfig.dataSource] as unknown) as Array<Option>;
   const { sortingKey, ordering, type } = sortConfig;
   if (type === "key") {
-    return data.sort((a: IOption, b: IOption) => {
+    return data.sort((a: Option, b: Option) => {
       const sortKey: string = sortingKey || "";
       return ordering === "ascending"
         ? a[sortKey] - b[sortKey]

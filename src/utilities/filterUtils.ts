@@ -1,17 +1,12 @@
-import {
-  IOption,
-  IOptions,
-  IFilterPayload,
-  IFilterInterface
-} from "../interfaces";
+import { Option, Options, FilterPayload, FilterInterface } from "../interfaces";
 
 export const filterUtility = (
-  payload: IFilterPayload,
-  dataSource: IOption,
-  filterStratergies: IOption
-): IOption | undefined => {
-  let tempData: IOption = [];
-  Object.values(payload).forEach((config: IFilterInterface): void => {
+  payload: FilterPayload,
+  dataSource: Option,
+  filterStratergies: Option
+): Option | undefined => {
+  let tempData: Option = [];
+  Object.values(payload).forEach((config: FilterInterface): void => {
     const { filterKey, type, matchType } = config;
     tempData = tempData || dataSource[config.dataSource];
 
@@ -19,12 +14,12 @@ export const filterUtility = (
     if (type !== "key") {
       const isFunction = filterStratergies[filterValue as string];
       if (!isFunction) return;
-      tempData = tempData.filter((item: IOption): boolean => {
+      tempData = tempData.filter((item: Option): boolean => {
         return isFunction(item);
       });
     }
 
-    tempData = tempData.filter((item: IOption): boolean => {
+    tempData = tempData.filter((item: Option): boolean => {
       if (matchType === "exact") {
         return ((filterValue as unknown) as Array<string | number>).includes(
           item[filterKey]
@@ -34,12 +29,12 @@ export const filterUtility = (
         const min: number[] = [];
         const max: number[] = [];
         config.options
-          .filter((opt: IOptions) =>
+          .filter((opt: Options) =>
             ((filterValue as unknown) as Array<string | number>).includes(
               opt.value
             )
           )
-          .forEach((value: IOptions) => {
+          .forEach((value: Options) => {
             min.push(value.startKey || 0);
             max.push(value.endKey || 0);
           });
