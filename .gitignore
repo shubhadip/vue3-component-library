@@ -2,6 +2,7 @@
 node_modules
 /dist
 /testumdbuild
+/widgets-build
 
 # local env files
 .env.local
@@ -21,3 +22,4 @@ pnpm-debug.log*
 *.njsproj
 *.sln
 *.sw?
+*.config.js
